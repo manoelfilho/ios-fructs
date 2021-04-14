@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct OnBoardingView: View {
+    //MARK: Properties
+    var fruits: [Fruit] = fruitsData
+    
+    //MARK: Body
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        TabView{
+            ForEach(fruits[0...12]){ item in
+                FruitCardView(fruit: item)
+            }
+        }//: TAB
+        .tabViewStyle(PageTabViewStyle())
+        .padding(.vertical, 20)
+        
     }
 }
 
+//MARK: Preview
 struct OnBoardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnBoardingView()
+        OnBoardingView(fruits: fruitsData)
     }
 }
